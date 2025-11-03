@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply mx-auto w-full max-w-[1440px] px-3 sm:px-4 lg:px-6;
+  }
+
+  /* Responsive utility classes */
+  .responsive-padding {
+    @apply px-3 sm:px-4 lg:px-6;
+  }
+
+  .responsive-margin {
+    @apply mx-3 sm:mx-4 lg:mx-6;
+  }
+
+  .responsive-text {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+
+  .mobile-friendly-touch {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  .responsive-card {
+    @apply p-3 sm:p-4 lg:p-6 rounded-lg;
+  }
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("/fonts/Orbitron-Font/Orbitron-Black.ttf") format('truetype');
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background: #e0e0e700;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e700;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #526fff;
+  border-radius: 5px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #06070B;
+  /* Ensure consistent text rendering on all devices */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scrolling on mobile */
+  overflow-x: hidden;
+  /* Improve touch scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+}
+
+.shadow-btn-inner {
+  background-color: transparent !important;
+  color: white !important;
+  border-radius: 50px;
+  border: solid 1px #526fff !important;
+  box-shadow: none;
+}
+
+.shadow-btn-inner:hover {
+  background-color: #526fff !important;
+  border-radius: 50px;
+}
+
+.shadow-btn-inner div ul {
+  background-color: black !important;
+  color: white !important;
+  border-radius: 5px;
+  border: solid 1px gray-600 !important;
+  box-shadow: none;
+}
+
+.shadow-btn-inner div ul li button {
+  font-size: 18px !important;
+  padding: 6px 2px;
+}
+
+.shadow-btn-inner div ul li:hover {
+  background-color: #526fff !important;
+}
+
+/* Reflection effect */
+.reflected-text-wrapper {
+  position: relative;
+}
+
+.reflected-text {
+  display: inline-block;
+  position: absolute;
+  top: 100%;
+  /* Position the reflection below the text */
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+  transform: scaleY(-1);
+  /* Flip the text vertically */
+  transform-origin: top;
+  filter: blur(1px);
+  /* Optional: Adds a blur to make it more realistic */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
+  /* Fade out effect */
+}
+
+.harlow {
+  font-family: "Orbitron";
+}
+
+@keyframes image-bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-30px);
+  }
+
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.image-bounce {
+  display: inline-block;
+  animation: bounce 2s infinite;
+}
+
+/* Responsive optimizations for very small screens */
+@media (max-width: 320px) {
+  .container {
+    @apply px-2;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  /* Ensure buttons are still touch-friendly */
+  button, [role="button"] {
+    min-height: 44px;
+  }
+}
+
+/* Optimize for landscape mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: 100vh;
+  }
+}
+
+/* Improve focus styles for accessibility */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-gray-400 {
+    color: #a0a0a0 !important;
+  }
+
+  .text-gray-600 {
+    color: #808080 !important;
+  }
+}
